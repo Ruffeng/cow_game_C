@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DE8C811A1F97B9BF0048B0C6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DE8C81191F97B9BF0048B0C6 /* main.cpp */; };
+		DED349AF1F9F307000551432 /* fBullCowGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DED349AD1F9F307000551432 /* fBullCowGame.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		DE8C81161F97B9BF0048B0C6 /* cowGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = cowGame; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE8C81191F97B9BF0048B0C6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		DED349AD1F9F307000551432 /* fBullCowGame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fBullCowGame.cpp; sourceTree = "<group>"; };
+		DED349AE1F9F307000551432 /* fBullCowGame.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = fBullCowGame.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				DE8C81191F97B9BF0048B0C6 /* main.cpp */,
+				DED349AD1F9F307000551432 /* fBullCowGame.cpp */,
+				DED349AE1F9F307000551432 /* fBullCowGame.hpp */,
 			);
 			path = cowGame;
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE8C811A1F97B9BF0048B0C6 /* main.cpp in Sources */,
+				DED349AF1F9F307000551432 /* fBullCowGame.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +252,7 @@
 				DE8C811F1F97B9BF0048B0C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
