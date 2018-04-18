@@ -36,7 +36,7 @@ void PlayGame(){
   for(int32 count = 1 ; count <= MaxTries ; count++){
     FText Guess = GetValidGuess();
     
-    FBullCowCount BullCowCount = BCGame.SubmitGuess(Guess);
+    FBullCowCount BullCowCount = BCGame.SubmitValidGuess(Guess);
     std::cout << "Bulls" << BullCowCount.Bulls;
     std::cout << "Cows" << BullCowCount.Cows << "\n\n";
   }
@@ -74,7 +74,7 @@ FText GetValidGuess(){
         std::cout << "Please enter all lower case letters";
         break;
       default:
-        return Guess;
+        break;
     }
     
   } while(Status != EGuessStatus::OK);

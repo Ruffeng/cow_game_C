@@ -46,13 +46,13 @@ EGuessStatus FBullCowGame::CheckGuestValidity(FString Guess) {
   }
 }
 
-FBullCowCount FBullCowGame::SubmitGuess(FString Guess){
+FBullCowCount FBullCowGame::SubmitValidGuess(FString Guess){
   MyCurrentTry ++;
   FBullCowCount FBullCowCount;
-  int32 HiddernWordLength = MyHiddenWord.length();
+  int32 WordLength = MyHiddenWord.length();
   
-  for(int32 MHWChar = 0; MHWChar < HiddernWordLength; MHWChar ++) {
-    for(int32 GuessChar = 0; GuessChar < HiddernWordLength; GuessChar++) {
+  for(int32 MHWChar = 0; MHWChar < WordLength; MHWChar ++) {
+    for(int32 GuessChar = 0; GuessChar < WordLength; GuessChar++) {
       if(Guess[GuessChar] == MyHiddenWord[MHWChar]) {
         if( MHWChar == GuessChar) {
           FBullCowCount.Bulls ++ ;

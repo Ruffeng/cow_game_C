@@ -32,7 +32,7 @@ public:
   bool IsGameWon() const;
   EGuessStatus CheckGuestValidity(FString);
   
-  FBullCowCount SubmitGuess(FString);
+  FBullCowCount SubmitValidGuess(FString);
   
 private:
   int32 MyCurrentTry ;
