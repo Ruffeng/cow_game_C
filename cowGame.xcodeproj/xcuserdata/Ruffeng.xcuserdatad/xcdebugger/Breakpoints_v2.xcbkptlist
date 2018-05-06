@@ -10,29 +10,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cowGame/fBullCowGame.cpp"
-            timestampString = "540328128.115842"
+            timestampString = "547328519.876749"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "FBullCowGame::CheckGuestValidity(FString Guess)"
-            landmarkType = "7">
+            startingLineNumber = "43"
+            endingLineNumber = "43">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "cowGame/main.cpp"
-            timestampString = "540332119.553688"
+            filePath = "cowGame/fBullCowGame.cpp"
+            timestampString = "547328519.876749"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "GetValidGuess()"
-            landmarkType = "9">
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "FBullCowGame::GetMaxTries()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

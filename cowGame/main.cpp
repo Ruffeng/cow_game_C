@@ -1,4 +1,5 @@
 
+#pragma once
 
 #include "fBullCowGame.hpp"
 #include <iostream>
@@ -16,6 +17,7 @@ void PrintIntro();
 void PlayGame();
 FText GetValidGuess();
 bool AskToPlayAgain();
+void PrintGameSumary();
 FBullCowGame BCGame;
 
 int main() {
@@ -33,19 +35,28 @@ void PlayGame(){
   int32 MaxTries = BCGame.GetMaxTries();
   std::cout << MaxTries << std::endl;
   
-  for(int32 count = 1 ; count <= MaxTries ; count++){
+  while(!BCGame.IsGameWon() && BCGame.GetCurrentTry() <= MaxTries) {
     FText Guess = GetValidGuess();
     
     FBullCowCount BullCowCount = BCGame.SubmitValidGuess(Guess);
     std::cout << "Bulls" << BullCowCount.Bulls;
     std::cout << "Cows" << BullCowCount.Cows << "\n\n";
   }
+  PrintGameSumary();
   std::cout << std::endl;
+  return; 
 }
 
 void PrintIntro() {
   // Intro of the game
-  std::cout  << "Welcome to Bulls and Cows!\n";
+  std::cout << "Welcome to Bulls and Cows, a fun word game.\n";
+  std::cout << std::endl;
+  std::cout << "          }   {         ___ " << std::endl;
+  std::cout << "          (o o)        (o o) " << std::endl;
+  std::cout << "   /-------\\ /          \\ /-------\\ " << std::endl;
+  std::cout << "  / | BULL |O            O| COW  | \\ " << std::endl;
+  std::cout << " *  |-,--- |              |------|  * " << std::endl;
+  std::cout << "    ^      ^              ^      ^ " << std::endl;
   std::cout << "Can you guess the "<< BCGame.GetHiddenWordLength();
   std::cout <<" letter isogram I'm thinking off? \n";
   std::cout << std::endl;
@@ -58,11 +69,12 @@ FText GetValidGuess(){
   do {
     int32 CurrentTry = BCGame.GetCurrentTry();
     // User's input. String is coming from namespace FText
-    std::cout << "Try "<< CurrentTry <<".Enter your guess\n";
+    std::cout << "Try "<< CurrentTry <<" of " << BCGame.GetMaxTries() << ".Enter your guess\n";
     //  cin >> Guess;
     std::getline(std::cin, Guess);
+                
+    Status = BCGame.CheckGuestValidity(Guess);
     
-    EGuessStatus Status = BCGame.CheckGuestValidity(Guess);
     switch(Status) {
       case EGuessStatus::Wrong_Length:
         std::cout << "Please enter a " << BCGame.GetHiddenWordLength() << " letter word \n";
@@ -78,7 +90,6 @@ FText GetValidGuess(){
     }
     
   } while(Status != EGuessStatus::OK);
-  std::cout << std::endl;
   return Guess;
 }
 
@@ -88,4 +99,15 @@ bool AskToPlayAgain() {
   std::getline(std::cin, Response);
   return (Response[0]== 'y') || (Response[0]=='Y');
 
+}
+
+void PrintGameSumary() {
+  if(BCGame.IsGameWon()) {
+    std::cout << "CONGRATS! YOU WON THE GAME";
+    return;
+  }
+  else {
+    std:: cout << "Sorry, you lost the game";
+    return;
+  }
 }

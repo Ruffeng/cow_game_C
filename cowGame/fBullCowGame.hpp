@@ -1,5 +1,4 @@
-
-
+#pragma once
 #include <string>
 // Never do this on a header -> using namespace std;
 using FString = std::string; // FOR UE4:w
@@ -36,6 +35,9 @@ public:
   
 private:
   int32 MyCurrentTry ;
-  int32 MyMaxTries ;
   FString MyHiddenWord;
+  bool bGameIsWon;
+  // functions
+  bool IsIsogram(FString) const;
+  bool IsLowerCase(FString) const; 
 };

@@ -5,8 +5,10 @@
 //  Created by Monkey on 24/10/17.
 //  Copyright © 2017 Monkey. All rights reserved.
 //
-
+#pragma once
 #include "fBullCowGame.hpp"
+#include <map>
+#define Tmap std::map
 
 FBullCowGame::FBullCowGame() {
   Reset();
@@ -14,28 +16,36 @@ FBullCowGame::FBullCowGame() {
 
 void FBullCowGame::Reset(){
   constexpr int32 MY_CURRENT_TRY = 1;
-  constexpr int32 MY_MAX_TRIES = 8;
-  const FString HIDDEN_WORD = "ant";
+  const FString HIDDEN_WORD = "planet";
   
   MyHiddenWord = HIDDEN_WORD;
   MyCurrentTry = MY_CURRENT_TRY;
-  MyMaxTries = MY_MAX_TRIES;
+  bGameIsWon = false;
   return;
 }
 
-int32 FBullCowGame::GetMaxTries() const { return MyMaxTries; }
+int32 FBullCowGame::GetMaxTries() const {
+  Tmap<int32, int32> WordLengthToMaxTries {
+    {3,4},
+    {4,7},
+    {5,10},
+    {6,16},
+    {7,20}
+  };
+  return WordLengthToMaxTries[MyHiddenWord.length()];
+}
 
 int32 FBullCowGame::GetHiddenWordLength() const { return MyHiddenWord.length(); }
 
 int32 FBullCowGame::GetCurrentTry() const {  return MyCurrentTry; }
 
-bool FBullCowGame::IsGameWon() const {  return false; }
+bool FBullCowGame::IsGameWon() const { return bGameIsWon; }
 
 EGuessStatus FBullCowGame::CheckGuestValidity(FString Guess) {
-  if(false) {
+  if(!IsIsogram(Guess)) {
     return EGuessStatus::Not_Isogram;
   }
-  else if(false) {
+  else if(!IsLowerCase(Guess)) {
     return EGuessStatus::Not_Lowercase;
   }
   else if(Guess.length() != GetHiddenWordLength()) {
@@ -63,6 +73,37 @@ FBullCowCount FBullCowGame::SubmitValidGuess(FString Guess){
       }
     }
   }
-  
+  if( FBullCowCount.Bulls == WordLength) {
+    bGameIsWon = true;
+  }
+  else {
+    bGameIsWon = false;
+  }
   return FBullCowCount;
+}
+
+bool FBullCowGame::IsIsogram(FString Word) const {
+  if(Word.length() <= 1) { return true; }
+  
+  Tmap<char, bool> LetterSeen; // Could be a kind of Hash in Ruby
+  
+  for(auto Letter : Word) { // For all letters from the Word. This 'auto' is to set auto data type, the regular one would be char
+    Letter = tolower(Letter);
+    if(LetterSeen[Letter]) {
+      return false;
+    }
+    else {
+      LetterSeen[Letter] = true;
+    }
+    
+  }
+  return true;
+}
+
+bool FBullCowGame::IsLowerCase(FString Word) const {
+  
+  for(auto Letter : Word) {
+    if(!islower(Letter)) { return false; }
+  }
+  return true;
 }
